@@ -59,6 +59,12 @@ T* Weak<T>::operator->() {
     return m_pt->m_val;
 }
 
+template <typename T>
+Weak<T>& Weak<T>::operator=(const Weak& other) {
+    if (this != &other) {
+        if (m_pt) {
+            m_pt->weakCount--;
+            if (m_pt->weakCount == 0 && m_pt->refCount == 0) {
                 delete m_pt;
             }
         }
