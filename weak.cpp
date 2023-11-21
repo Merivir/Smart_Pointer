@@ -14,6 +14,11 @@ Weak<T>::Weak(const Weak& other) : m_pt(other.m_pt) {
 }
 
 template <typename T>
+Weak<T>::Weak(Weak&& other) noexcept : m_pt(other.m_pt) {
+    other.m_pt = nullptr;
+}
+
+template <typename T>
 Weak<T>::Weak(const Shared<T>& other) : m_pt(other.m_ptr) {
     if (m_pt) {
         m_pt->weakCount++;
@@ -53,3 +58,35 @@ T* Weak<T>::operator->() {
     }
     return m_pt->m_val;
 }
+
+                delete m_pt;
+            }
+        }
+
+        m_pt = other.m_pt;
+
+        if (m_pt) {
+            m_pt->weakCount++;
+        }
+    }
+
+    return *this;
+}
+
+template <typename T>
+Weak<T>& Weak<T>::operator=(Weak&& other) noexcept {
+    if (this != &other) {
+        if (m_pt) {
+            m_pt->weakCount--;
+            if (m_pt->weakCount == 0 && m_pt->refCount == 0) {
+                delete m_pt;
+            }
+        }
+
+        m_pt = other.m_pt;
+        other.m_pt = nullptr;
+    }
+
+    return *this;
+}
+
