@@ -94,3 +94,8 @@ int Shared<T>::refCount() const {
     }
     return m_ptr->refCount;
 }
+
+template <typename T, typename... Args>
+Shared<T> make_shared(Args&&... args) {
+    return Shared<T>(new T(std::forward<Args>(args)...));
+}
