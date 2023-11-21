@@ -39,5 +39,11 @@ int main() {
     Unique<int> anotherUniqueInt = std::move(uniqueInt);
     std::cout << "Value in the new Unique: " << *anotherUniqueInt << std::endl;
 
+    auto sharedPtr = make_shared<int>(42);
+    std::cout << "Shared int: " << *sharedPtr << std::endl;
+
+    auto uniquePtr = make_unique<int>(42);
+    std::cout << "Unique int: " << *uniquePtr << std::endl;
+    
     return 0;
 }
