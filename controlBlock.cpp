@@ -4,7 +4,7 @@ template <typename T>
 ControlBlock<T>::ControlBlock(T* val) : m_val(val), refCount(1), weakCount(0) {}
 
 template <typename T>
-ControlBlock<T>::ControlBlock(ControlBlock&& other)
+ControlBlock<T>::ControlBlock(ControlBlock&& other) noexcept
     : m_val(other.m_val), refCount(other.refCount), weakCount(other.weakCount) {
     other.m_val = nullptr;
     other.refCount = 0;
@@ -12,7 +12,7 @@ ControlBlock<T>::ControlBlock(ControlBlock&& other)
 }
 
 template <typename T>
-ControlBlock<T>& ControlBlock<T>::operator=(ControlBlock&& other) {
+ControlBlock<T>& ControlBlock<T>::operator=(ControlBlock&& other) noexcept {
     if (this != &other) {
         delete m_val;
         m_val = other.m_val;
