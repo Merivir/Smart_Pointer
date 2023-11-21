@@ -32,5 +32,11 @@ int main() {
 
     std::cout << "weak1 refCount after shared3 is out of scope: " << weak1.refCount() << std::endl;
 
+    Unique<int> uniqueInt(new int(42));
+    std::cout << "Value: " << *uniqueInt << std::endl;
+
+    Unique<int> anotherUniqueInt = std::move(uniqueInt);
+    std::cout << "Value in the new Unique: " << *anotherUniqueInt << std::endl;
+
     return 0;
 }
