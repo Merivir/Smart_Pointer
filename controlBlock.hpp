@@ -12,8 +12,8 @@ struct ControlBlock {
     ControlBlock(T* val);
     ControlBlock(const ControlBlock& other) = delete;
     ControlBlock& operator=(const ControlBlock& other) = delete;
-    ControlBlock(ControlBlock&& other);
-    ControlBlock& operator=(ControlBlock&& other);
+    ControlBlock(ControlBlock&& other) noexcept;
+    ControlBlock& operator=(ControlBlock&& other) noexcept;
     ~ControlBlock();
 };
 
