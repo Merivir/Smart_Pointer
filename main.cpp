@@ -1,6 +1,7 @@
 #include <iostream>
 #include "shared.cpp"
 #include "weak.cpp"
+#include "unique.cpp"
 
 int main() {
     Shared<int> shared1(new int(42));
