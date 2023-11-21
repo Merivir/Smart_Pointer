@@ -12,6 +12,7 @@ public:
     Weak();
     Weak(T* ptr);
     Weak(const Weak& other);
+    Weak(Weak&& other) noexcept;  
     Weak(const Shared<T>& other);
     ~Weak();
     Shared<T> lock() const;
@@ -19,6 +20,9 @@ public:
     T& operator*();
     template <typename U = T, typename = std::enable_if_t<!std::is_fundamental_v<U>>>
     T* operator->();
+
+    Weak& operator=(const Weak& other);
+    Weak& operator=(Weak&& other) noexcept;  
 
 private:
     ControlBlock<T>* m_pt;
