@@ -1,6 +1,8 @@
 #ifndef CONTROLBLOCK_HPP
 #define CONTROLBLOCK_HPP
 
+#include <stdexcept>
+
 template <typename T>
 struct ControlBlock {
     T* m_val;
