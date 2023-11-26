@@ -28,4 +28,6 @@ private:
     friend class Weak<T>;
 };
 
+#include "shared.tpp"
+
 #endif // SHARED_H
