@@ -1,5 +1,3 @@
-#include "weak.h"
-
 template <typename T>
 Weak<T>::Weak() : m_pt(nullptr) {}
 
