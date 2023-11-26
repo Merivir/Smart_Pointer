@@ -1,5 +1,3 @@
-#include "controlBlock.hpp"
-
 template <typename T>
 ControlBlock<T>::ControlBlock(T* val) : m_val(val), refCount(1), weakCount(0) {}
 
