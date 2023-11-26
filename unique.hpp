@@ -17,4 +17,6 @@ private:
     T* m_ptr;
 };
 
+#include "unique.tpp"
+
 #endif // UNIQUE_H
