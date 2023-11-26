@@ -1,5 +1,3 @@
-#include "shared.h"
-
 template <typename T>
 Shared<T>::Shared(T* ptr) : m_ptr(new ControlBlock<T>(ptr)) {}
 
