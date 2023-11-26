@@ -17,6 +17,6 @@ struct ControlBlock {
     ~ControlBlock();
 };
 
-#include "controlBlock.cpp"
+#include "controlBlock.tpp"
 
 #endif // CONTROLBLOCK_HPP
